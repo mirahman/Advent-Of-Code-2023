@@ -1,6 +1,6 @@
 const fs = require('fs');
 try {
-    const txt = fs.readFileSync('./input1.txt', 'utf8');
+    const txt = fs.readFileSync('./input.txt', 'utf8');
     const elves = txt.split('\n')
     let total = 0;
     let row = 1;
@@ -40,7 +40,7 @@ try {
         for(let col of rgb) {
             tmpSum *= max[col];
         }
-        total += row;
+        total += tmpSum;
 
         /*
         if(isPossible) {
