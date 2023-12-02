@@ -1,9 +1,12 @@
 const fs = require('fs');
 try {
-    const txt = fs.readFileSync('./input2.txt', 'utf8');
+    const txt = fs.readFileSync('./input.txt', 'utf8');
     const elves = txt.split('\n')
     let totalPoints = 0;
     let count = 1;
+    let keys = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let values = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+
     for (let elv of elves) {
         let firstDigit = "";
         let lastDigit = "";
@@ -21,58 +24,12 @@ try {
                 numeric = numeric + "" + elv[i];
                 if (numeric.length >= 3) {
                     let matched = false;
-                    if (numeric.includes('one')) {
-                        digit = 1;
-                        if (numeric.endsWith('one')) {
-                            lastDigit = 1;
-                        }
-                    }
-                    if (numeric.includes('two')) {
-                        digit = 2;
-                        if (numeric.endsWith('two')) {
-                            lastDigit = 2;
-                        }
-                    }
-                    if (numeric.includes('three')) {
-                        digit = 3;
-                        if (numeric.endsWith('three')) {
-                            lastDigit = 3;
-                        }
-                    }
-                    if (numeric.includes('four')) {
-                        digit = 4;
-                        if (numeric.endsWith('four')) {
-                            lastDigit = 4;
-                        }
-                    }
-                    if (numeric.includes('five')) {
-                        digit = 5;
-                        if (numeric.endsWith('five')) {
-                            lastDigit = 5;
-                        }
-                    }
-                    if (numeric.includes('six')) {
-                        digit = 6;
-                        if (numeric.endsWith('six')) {
-                            lastDigit = 6;
-                        }
-                    }
-                    if (numeric.includes('seven')) {
-                        digit = 7;
-                        if (numeric.endsWith('seven')) {
-                            lastDigit = 7;
-                        }
-                    }
-                    if (numeric.includes('eight')) {
-                        digit = 8;
-                        if (numeric.endsWith('eight')) {
-                            lastDigit = 8;
-                        }
-                    }
-                    if (numeric.includes('nine')) {
-                        digit = 9;
-                        if (numeric.endsWith('nine')) {
-                            lastDigit = 9;
+                    for (let x = 0; x < keys.length; x++) {
+                        if (numeric.includes(values[x])) {
+                            digit = keys[x];
+                            if (numeric.endsWith(values[x])) {
+                                lastDigit = keys[x];
+                            }
                         }
                     }
                 }
@@ -87,7 +44,7 @@ try {
                 }
             }
         }
-        console.log(count++, firstDigit + "" + lastDigit);
+        //console.log(count++, firstDigit + "" + lastDigit);
         totalPoints += parseInt(firstDigit + "" + lastDigit)
     }
     console.log(totalPoints)
