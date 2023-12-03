@@ -23,7 +23,7 @@ try {
         if (i > 0) {
             for (let x = left; x <= right; x++) {
                 if (isSymbol(matrix[i - 1][x])) {
-                    return [i-1, x]
+                    return [i - 1, x]
                 }
             }
         }
@@ -32,19 +32,17 @@ try {
         }
 
         if (isSymbol(matrix[i][right]) && right != (matrix[i].length - 1)) {
-            //isValid = true;
             return [i, right]
         }
 
         if (i < matrix.length - 1) {
             for (let x = left; x <= right; x++) {
                 if (isSymbol(matrix[i + 1][x])) {
-                    //isValid = true;
-                    return [i+1, x]
+                    return [i + 1, x]
                 }
             }
         }
-        return [-1,-1];
+        return [-1, -1];
     }
 
     let mapper = new Map();
@@ -61,15 +59,15 @@ try {
                     let right = j;
                     let [x, y] = isValidPart(i, j, left, right, num);
                     if (x != -1 && y != -1) {
-                        let key = x+"-"+y;
-                        if(mapper.has(key)) {
+                        let key = x + "-" + y;
+                        if (mapper.has(key)) {
                             console.log("found common: ", key);
                             total += (parseInt(num) * parseInt(mapper.get(key)));
                             mapper.delete(key);
                         } else {
                             mapper.set(key, num);
                         }
-                        
+
                     }
                 }
                 num = "";
@@ -77,19 +75,19 @@ try {
         }
         // last number of the row
         if (num != "") {
-            
+
             let [x, y] = isValidPart(i, matrix[i].length - 1, start - 1, matrix[i].length - 1, num);
-                    if (x != -1 && y != -1) {
-                        let key = x+"-"+y;
-                        if(mapper.has(key)) {
-                            console.log("found common: ", key);
-                            total += (parseInt(num) * parseInt(mapper.get(key)));
-                            mapper.delete(key);
-                        } else {
-                            mapper.set(key, num);
-                        }
-                        
-                    }
+            if (x != -1 && y != -1) {
+                let key = x + "-" + y;
+                if (mapper.has(key)) {
+                    console.log("found common: ", key);
+                    total += (parseInt(num) * parseInt(mapper.get(key)));
+                    mapper.delete(key);
+                } else {
+                    mapper.set(key, num);
+                }
+
+            }
         }
     }
     console.log(total)
