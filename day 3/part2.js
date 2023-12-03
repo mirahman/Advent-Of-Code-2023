@@ -10,13 +10,9 @@ try {
         matrix.push(elv);
     }
 
-    const isDigit = (digit) => {
-        return digit >= '0' && digit <= '9'
-    }
+    const isDigit = (digit) => { return digit >= '0' && digit <= '9'; }
 
-    const isSymbol = (char) => {
-        return char == "*"
-    }
+    const isSymbol = (char) => { return char == "*" }
 
     const isValidPart = (i, j, left, right, num) => {
         let isValid = false;
@@ -61,13 +57,11 @@ try {
                     if (x != -1 && y != -1) {
                         let key = x + "-" + y;
                         if (mapper.has(key)) {
-                            console.log("found common: ", key);
                             total += (parseInt(num) * parseInt(mapper.get(key)));
                             mapper.delete(key);
                         } else {
                             mapper.set(key, num);
                         }
-
                     }
                 }
                 num = "";
@@ -75,18 +69,15 @@ try {
         }
         // last number of the row
         if (num != "") {
-
             let [x, y] = isValidPart(i, matrix[i].length - 1, start - 1, matrix[i].length - 1, num);
             if (x != -1 && y != -1) {
                 let key = x + "-" + y;
                 if (mapper.has(key)) {
-                    console.log("found common: ", key);
                     total += (parseInt(num) * parseInt(mapper.get(key)));
                     mapper.delete(key);
                 } else {
                     mapper.set(key, num);
                 }
-
             }
         }
     }
