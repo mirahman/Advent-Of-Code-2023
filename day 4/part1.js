@@ -6,22 +6,22 @@ try {
     for (let card of cards) {
         let map = new Map();
         let matchCount = 0;
-
         let tmp = card.split(":")[1].split("|");
         let winningNumbers = tmp[0].trim().split(/\s+/);
-        
-        for(let num of winningNumbers) {
+        let myNumbers = tmp[1].trim().split(/\s+/);
+
+        for (let num of winningNumbers) {
             map.set(num);
         }
-        let myNumbers =tmp[1].trim().split(/\s+/);
-        console.log(winningNumbers, myNumbers);
-        for(let num of myNumbers) {
-            if(map.has(num)) {
+
+        for (let num of myNumbers) {
+            if (map.has(num)) {
                 matchCount++;
             }
         }
-        if(matchCount) {
-            total += Math.pow(2, matchCount-1);
+
+        if (matchCount) {
+            total += Math.pow(2, matchCount - 1);
         }
     }
     console.log(total)
