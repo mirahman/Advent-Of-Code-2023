@@ -12,14 +12,12 @@ try {
         let winningNumbers = tmp[0].trim().split(/\s+/);
         let myNumbers = tmp[1].trim().split(/\s+/);
 
-        for (let num of winningNumbers) {
-            map.set(num);
-        }
-        for (let num of myNumbers) {
-            if (map.has(num)) {
-                matchCount++;
-            }
-        }
+        var common = myNumbers.filter(function (n) {
+            return winningNumbers.indexOf(n) !== -1;
+        });
+
+        matchCount = common.length;
+        
         for (let x = 0; x < matchCount; x++) {
             counter[x + row + 1] += counter[row];
         }
