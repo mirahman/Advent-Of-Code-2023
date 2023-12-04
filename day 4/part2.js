@@ -20,10 +20,8 @@ try {
                 matchCount++;
             }
         }
-        for (let y = 0; y < counter[row]; y++) {
-            for (let x = 0; x < matchCount; x++) {
-                counter[x + row + 1] += 1;
-            }
+        for (let x = 0; x < matchCount; x++) {
+            counter[x + row + 1] += counter[row];
         }
         row++;
     }
