@@ -4,7 +4,6 @@ try {
     const cards = txt.split('\n')
     let total = 0;
     for (let card of cards) {
-        let map = new Map();
         let matchCount = 0;
         let tmp = card.split(":")[1].split("|");
         let winningNumbers = tmp[0].trim().split(/\s+/);

@@ -6,7 +6,6 @@ try {
     let total = 0;
     let row = 0;
     for (let card of cards) {
-        let map = new Map();
         let matchCount = 0;
         let tmp = card.split(":")[1].split("|");
         let winningNumbers = tmp[0].trim().split(/\s+/);
@@ -17,7 +16,7 @@ try {
         });
 
         matchCount = common.length;
-        
+
         for (let x = 0; x < matchCount; x++) {
             counter[x + row + 1] += counter[row];
         }
