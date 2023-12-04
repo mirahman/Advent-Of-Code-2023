@@ -11,7 +11,7 @@ try {
         let tmp = card.split(":")[1].split("|");
         let winningNumbers = tmp[0].trim().split(/\s+/);
         let myNumbers = tmp[1].trim().split(/\s+/);
-        
+
         for (let num of winningNumbers) {
             map.set(num);
         }
