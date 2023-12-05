@@ -39,12 +39,12 @@ try {
         return loc
     }
 
-    // block search using 1K block chunk
+    // block search using 10K block chunk
     let minLocInPair = []
     for (const [seed1, seed2] of seedArr) {
         let minLoc = Infinity
         let minLocSeed = seed1
-        for (let i = seed1; i <= seed2; i += 1000) {
+        for (let i = seed1; i <= seed2; i += 10000) {
             const loc = getLocationofSeed(i)
             if (loc < minLoc) {
                 minLoc = loc
