@@ -27,10 +27,8 @@ try {
 
         let matched = false;
         let values = [...counter].sort((a, b) => { return b[1] - a[1] });
-
         let [char, count] = values.shift();
 
-        let pos = 1;
         if (char != 'J' && hands.indexOf('J') >= 0) {
             count += counter.get('J'); // adding J to top one
         } if (char == 'J') { // J is the top count
@@ -49,34 +47,25 @@ try {
             matched = true;
         } else if (count == 3) {
             let [nextchar, tmp] = values.shift();
-            if (tmp == 2) {
+            if (tmp == 2)
                 tempSort[6].push(hands);
-            }
-            else {
+            else
                 tempSort[5].push(hands);
-            }
-
             matched = true;
         } else if (count == 2) {
             let [nextchar, tmp] = values.shift()
-            if (tmp == 2) {
+            if (tmp == 2)
                 tempSort[4].push(hands);
-            }
-            else {
+            else
                 tempSort[3].push(hands);
-            }
-
             matched = true;
         }
-
         if (!matched) {
             if (hands.indexOf('J') >= 0)
                 tempSort[2].push(hands);
             else
                 tempSort[1].push(hands);
         }
-
-
         return parseInt(sum, 10);
     }
 
@@ -96,7 +85,6 @@ try {
         //console.log(i, tempSort[i].length)
         if (tempSort[i].length > 0) {
             if (tempSort[i].length > 1) {
-                // 
                 let tmp = [];
                 for (let hand of tempSort[i]) {
                     //console.log(hand,scores.get(hand) );
@@ -109,13 +97,11 @@ try {
                     total += parseInt(rank * memo.get(sToHand.get(score)));
                     rank++;
                 }
-
             } else {
                 //console.log("single ", rank, tempSort[i], memo.get(tempSort[i][0]))
                 total += parseInt(rank * memo.get(tempSort[i][0]))
                 rank++;
             }
-
         }
     }
     //console.log(strLog);
