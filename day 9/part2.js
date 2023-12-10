@@ -15,14 +15,13 @@ try {
                 tmpNums.push(row[i + 1] - row[i]);
             }
             let total = tmpNums.filter((num) => num == 0);
-            stack.push(tmpNums);
             if (total.length == tmpNums.length) break;
+            stack.push(tmpNums);
         }
         let lastCell = 0;
         while (stack.length) {
             let row = stack.pop();
-            row.reverse();
-            lastCell = row[row.length - 1] - lastCell;
+            lastCell = row[0] - lastCell; // first cell for reverse
         }
         sum += lastCell;
     }
