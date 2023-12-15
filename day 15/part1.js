@@ -16,7 +16,7 @@ try {
     for(let word of strings) {
         let currentValue = 0;
         for(let i =0;i<word.length;i++) {
-                currentValue += word.charCodeAt(i);
+            currentValue += word.charCodeAt(i);
             currentValue *= 17;
             currentValue = currentValue % 256;
         }

@@ -60,7 +60,7 @@ try {
     }
     for (let [key, values] of map) {
         let counter = 1;
-        values = values.filter(a=>a);
+        values = values.filter(a=>a); // removing all nulls
         for (let val of values) {
             if (val) {
                 let [lense, focalLength] = val.split(" ");
